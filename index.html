@@ -68,21 +68,22 @@
             font-weight: 400;
             font-family: 'Roboto', sans-serif;
         }
-
-        .social-pill {
+      
+		.social-pill {
             display: flex;
             align-items: center;
             border-radius: 20px;
             padding: 10px;
             margin-bottom: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease;
+            transition: background 0.5s ease, border-color 0.5s ease;
             background-size: 100% 100%;
             border: 2px solid;
         }
 
-        .social-pill:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+        .social-pill:hover,
+        .social-pill:active {
+            background-size: 100% 100%;
         }
 
         .social-icon {
@@ -106,6 +107,12 @@
             background: linear-gradient(to left, #5865F2, #25252B 80%);
             border-color: #5865F2;
         }
+    
+        .discord:hover,
+        .discord:active {
+            background: linear-gradient(to right, rgba(88, 101, 242, 0.7), #5865F2);
+        }
+      
         
         .youtube {
             background: linear-gradient(to left, #FF0000, #25252B 80%);
