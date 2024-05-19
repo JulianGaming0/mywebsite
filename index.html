@@ -90,11 +90,16 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.5s ease;
+            z-index: 1;
         }
 
         .social-pill:hover::after, .social-pill:active::after {
             opacity: 1;
         }
+
+        .social-pill .social-icon, .social-pill .social-link {
+    		z-index: 2;
+		}
 
         .social-icon {
             width: 24px;
