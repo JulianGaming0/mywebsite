@@ -7,6 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <style>
+        :root {
+      		--hover-transparency: 0.5;
+      	}
+
         body {
             margin: 0;
             padding: 0;
@@ -42,15 +46,15 @@
             background: linear-gradient(90deg, #FF8911, #FDBF60, #9F70FD, #7F27FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .welcome-pill {
             background-color: #7F27FF;
             color: white;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 24px;
+            padding: 16px;
+            margin-bottom: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
@@ -73,8 +77,8 @@
             display: flex;
             align-items: center;
             border-radius: 20px;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 8px;
+            margin-bottom: 9px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             background-size: 100% 100%;
             border: 2px solid;
@@ -95,12 +99,31 @@
 
         .social-pill:hover::after, .social-pill:active::after {
             opacity: 1;
-	    transition: opacity 0s ease;
+	        transition: opacity 0s ease;
         }
 
         .social-pill .social-icon, .social-pill .social-link {
     	    z-index: 2;
-	}
+	    }
+
+        .fade-in-text {
+            opacity: 0;
+            font-weight: 900;
+            transition: opacity 2s ease-in-out;
+            position: absolute;
+            right: 10px;
+            text-align: right;
+            background: linear-gradient(90deg, #FF8911, #FDBF60, #9F70FD, #7F27FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: 3;
+        }
+
+        .social-pill:hover .fade-in-text {
+            opacity: 1;
+            transition: opacity 0.1s ease-in-out;
+        }
 
         .social-icon {
             width: 24px;
@@ -125,7 +148,7 @@
         }
 
         .discord::after {
-            background: linear-gradient(to right, rgba(88, 101, 242, 0.7), #5865F2);
+            background: linear-gradient(to right, rgba(88, 101, 242, var(--hover-transparency)), #5865F2);
         }
 
         .youtube {
@@ -134,7 +157,7 @@
         }
 
         .youtube::after {
-            background: linear-gradient(to right, rgba(255, 0, 0, 0.7), #FF0000);
+            background: linear-gradient(to right, rgba(255, 0, 0, var(--hover-transparency)), #FF0000);
         }
 
         .instagram {
@@ -143,7 +166,7 @@
         }
 
         .instagram::after {
-            background: linear-gradient(to right, rgba(225, 48, 108, 0.7), #E1306C);
+            background: linear-gradient(to right, rgba(225, 48, 108, var(--hover-transparency)), #E1306C);
         }
 
         .tiktok {
@@ -152,7 +175,7 @@
         }
 
         .tiktok::after {
-            background: linear-gradient(to right, rgba(105, 201, 208, 0.7), #69C9D0);
+            background: linear-gradient(to right, rgba(105, 201, 208, var(--hover-transparency)), #69C9D0);
         }
 
         .reddit {
@@ -161,7 +184,7 @@
         }
 
         .reddit::after {
-            background: linear-gradient(to right, rgba(255, 87, 0, 0.7), #FF5700);
+            background: linear-gradient(to right, rgba(255, 87, 0, var(--hover-transparency)), #FF5700);
         }
 
         .twitch {
@@ -170,16 +193,16 @@
         }
 
         .twitch::after {
-            background: linear-gradient(to right, rgba(100, 65, 165, 0.7), #6441A5);
+            background: linear-gradient(to right, rgba(100, 65, 165, var(--hover-transparency)), #6441A5);
         }
 
         .x {
-            background: linear-gradient(to left, #000000, #25252B 80%);
-            border-color: #000000;
+            background: linear-gradient(to left, #101010, #25252B 80%);
+            border-color: #101010;
         }
 
         .x::after {
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), #000000);
+            background: linear-gradient(to right, rgba(16, 16, 16, var(--hover-transparency)), #000000);
         }
 
         .xbox {
@@ -188,7 +211,7 @@
         }
 
         .xbox::after {
-            background: linear-gradient(to right, rgba(16, 124, 16, 0.7), #107C10);
+            background: linear-gradient(to right, rgba(16, 124, 16, var(--hover-transparency)), #107C10);
         }
 
         .steam {
@@ -197,7 +220,7 @@
 	}
 
         .steam::after {
-            background: linear-gradient(to right, rgba(42, 71, 94, 0.7), #2A475E);
+            background: linear-gradient(to right, rgba(42, 71, 94, var(--hover-transparency)), #2A475E);
         }
 
         .spotify {
@@ -206,7 +229,7 @@
         }
 
         .spotify::after {
-            background: linear-gradient(to right, rgba(29, 185, 84, 0.7), #1DB954);
+            background: linear-gradient(to right, rgba(29, 185, 84, var(--hover-transparency)), #1DB954);
         }
     </style>
 </head>
@@ -220,43 +243,53 @@
             </div>
             <div class="social-pill discord">
                 <img src="images/discord_icon.svg" alt="Discord Icon" class="social-icon">
-                <a href="#" class="social-link">Discord</a>
+                <a href="https://discord.com/invite/ZQcKeTJbya" class="social-link">Discord</a>
+                <div class="fade-in-text">@juliangaming007</div>
             </div>
             <div class="social-pill youtube">
                 <img src="images/youtube_icon.svg" alt="YouTube Icon" class="social-icon">
-                <a href="#" class="social-link">YouTube</a>
+                <a href="https://youtube.com/@JulianGaming007" class="social-link">YouTube</a>
+                <div class="fade-in-text">@JulianGaming007</div>
             </div>
             <div class="social-pill reddit">
                 <img src="images/reddit_icon.svg" alt="Reddit Icon" class="social-icon">
-                <a href="#" class="social-link">Reddit</a>
+                <a href="https://www.reddit.com/u/JulianGaming0077" class="social-link">Reddit</a>
+                <div class="fade-in-text">u/JulianGaming0077</div>
             </div>
             <div class="social-pill instagram">
                 <img src="images/instagram_icon.svg" alt="Instagram Icon" class="social-icon">
-                <a href="#" class="social-link">Instagram</a>
+                <a href="https://www.instagram.com/juliangaming007" class="social-link">Instagram</a>
+                <div class="fade-in-text">@juliangaming007</div>
             </div>
             <div class="social-pill tiktok">
                 <img src="images/tiktok_icon.svg" alt="TikTok Icon" class="social-icon">
-                <a href="#" class="social-link">TikTok</a>
+                <a href="https://www.tiktok.com/@juliangaming007" class="social-link">TikTok</a>
+                <div class="fade-in-text">@juliangaming007</div>
             </div>
             <div class="social-pill twitch">
                 <img src="images/twitch_icon.svg" alt="Twitch Icon" class="social-icon">
-                <a href="#" class="social-link">Twitch</a>
+                <a href="https://twitch.tv/juliangaming007" class="social-link">Twitch</a>
+                <div class="fade-in-text">@juliangaming007</div>
             </div>
             <div class="social-pill x">
                 <img src="images/x_icon.svg" alt="X Icon" class="social-icon">
-                <a href="#" class="social-link">X</a>
+                <a href="https://x.com/Julian47737754" class="social-link">X</a>
+                <div class="fade-in-text">@Julian47737754</div>
             </div>
             <div class="social-pill steam">
                 <img src="images/steam_icon.svg" alt="Steam Icon" class="social-icon">
                 <a href="https://steamcommunity.com/id/juliangaming007" class="social-link">Steam</a>
+                <div class="fade-in-text">juliangaming007</div>
             </div>
             <div class="social-pill xbox">
                 <img src="images/xbox_icon.svg" alt="Xbox Icon" class="social-icon">
                 <a href="#" class="social-link">Xbox</a>
+                <div class="fade-in-text">@JulianGaming007</div>
             </div>
             <div class="social-pill spotify">
                 <img src="images/spotify_icon.svg" alt="Spotify Icon" class="social-icon">
                 <a href="https://open.spotify.com/user/gu004wrt6anvbj6ryoi7rzjvt" class="social-link">Spotify</a>
+                <div class="fade-in-text">JulianGaming007</div>
             </div>
         </div>
     </div>
