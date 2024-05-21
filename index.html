@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <style>
         :root {
-      		--hover-transparency: 0.5;
+      		--hover-bg-transparency: 0.7;
       	}
 
         body {
@@ -81,7 +81,8 @@
             margin-bottom: 9px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             background-size: 100% 100%;
-            border: 2px solid;
+            border: 0px solid;
+            transition: border-width 0.6s linear;
             overflow: hidden;
         }
 
@@ -109,7 +110,7 @@
         .fade-in-text {
             opacity: 0;
             font-weight: 900;
-            transition: opacity 2s ease-in-out;
+            transition: opacity 1.5s ease;
             position: absolute;
             right: 10px;
             text-align: right;
@@ -122,7 +123,7 @@
 
         .social-pill:hover .fade-in-text {
             opacity: 1;
-            transition: opacity 0.1s ease-in-out;
+            transition: opacity 0.1s ease;
         }
 
         .social-icon {
@@ -148,7 +149,7 @@
         }
 
         .discord::after {
-            background: linear-gradient(to right, rgba(88, 101, 242, var(--hover-transparency)), #5865F2);
+            background: linear-gradient(to right, rgba(88, 101, 242, var(--hover-bg-transparency)), #5865F2);
         }
 
         .youtube {
@@ -157,7 +158,7 @@
         }
 
         .youtube::after {
-            background: linear-gradient(to right, rgba(255, 0, 0, var(--hover-transparency)), #FF0000);
+            background: linear-gradient(to right, rgba(255, 0, 0, var(--hover-bg-transparency)), #FF0000);
         }
 
         .instagram {
@@ -166,7 +167,7 @@
         }
 
         .instagram::after {
-            background: linear-gradient(to right, rgba(225, 48, 108, var(--hover-transparency)), #E1306C);
+            background: linear-gradient(to right, rgba(225, 48, 108, var(--hover-bg-transparency)), #E1306C);
         }
 
         .tiktok {
@@ -175,7 +176,7 @@
         }
 
         .tiktok::after {
-            background: linear-gradient(to right, rgba(105, 201, 208, var(--hover-transparency)), #69C9D0);
+            background: linear-gradient(to right, rgba(105, 201, 208, var(--hover-bg-transparency)), #69C9D0);
         }
 
         .reddit {
@@ -184,7 +185,7 @@
         }
 
         .reddit::after {
-            background: linear-gradient(to right, rgba(255, 87, 0, var(--hover-transparency)), #FF5700);
+            background: linear-gradient(to right, rgba(255, 87, 0, var(--hover-bg-transparency)), #FF5700);
         }
 
         .twitch {
@@ -193,7 +194,7 @@
         }
 
         .twitch::after {
-            background: linear-gradient(to right, rgba(100, 65, 165, var(--hover-transparency)), #6441A5);
+            background: linear-gradient(to right, rgba(100, 65, 165, var(--hover-bg-transparency)), #6441A5);
         }
 
         .x {
@@ -202,7 +203,7 @@
         }
 
         .x::after {
-            background: linear-gradient(to right, rgba(16, 16, 16, var(--hover-transparency)), #000000);
+            background: linear-gradient(to right, rgba(16, 16, 16, var(--hover-bg-transparency)), #000000);
         }
 
         .xbox {
@@ -211,7 +212,7 @@
         }
 
         .xbox::after {
-            background: linear-gradient(to right, rgba(16, 124, 16, var(--hover-transparency)), #107C10);
+            background: linear-gradient(to right, rgba(16, 124, 16, var(--hover-bg-transparency)), #107C10);
         }
 
         .steam {
@@ -220,7 +221,7 @@
 	}
 
         .steam::after {
-            background: linear-gradient(to right, rgba(42, 71, 94, var(--hover-transparency)), #2A475E);
+            background: linear-gradient(to right, rgba(42, 71, 94, var(--hover-bg-transparency)), #2A475E);
         }
 
         .spotify {
@@ -229,7 +230,7 @@
         }
 
         .spotify::after {
-            background: linear-gradient(to right, rgba(29, 185, 84, var(--hover-transparency)), #1DB954);
+            background: linear-gradient(to right, rgba(29, 185, 84, var(--hover-bg-transparency)), #1DB954);
         }
     </style>
 </head>
