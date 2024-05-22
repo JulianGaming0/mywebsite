@@ -48,7 +48,8 @@
             background: linear-gradient(90deg, #FF8911, #FDBF60, #9F70FD, #7F27FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+            margin-top: -4px;
         }
 
         .welcome-pill {
@@ -83,8 +84,9 @@
             margin-bottom: 9px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             background-size: 100% 100%;
-            transition: border-color 1s ease;
+            transition: border-color 1s ease, height 2.5s ease;
             overflow: hidden;
+            height: 20px;
         }
 
         .social-pill::after {
@@ -102,6 +104,11 @@
         .social-pill:hover::after, .social-pill:active::after {
             opacity: 1;
 	        transition: opacity 0s ease;
+        }
+
+        .social-pill:hover {
+            height: 40px;
+            transition: height 0.5s ease-out;
         }
 
         .social-pill .social-icon, .social-pill .social-link {
@@ -134,21 +141,21 @@
         }
 
         .skibidi-pill {
-            background-color: #7F27FF;
             color: white;
             border-radius: 240px;
-            height: 30px;
+            height: 34px;
             width: 100%;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: height 0.3s ease, width 0.5s ease;
+            transition: height 0.7s ease, width 0.5s ease, margin-left 0.5s ease, margin-top 0.5s ease, margin-bottom 0.5s ease;
         }
-
         .skibidi-pill:hover {
-            height: 500px;
-            width: 150%;
-            transition: height 0.5s ease, width 0.8s ease;
+            height: 400px;
+            width: 200%;
+            margin-left: -50%;
+            margin-top: -2%;
+            margin-bottom: 8px;
+            transition: height 0.5s ease, width 0.8s ease, margin-left 0.8s ease, margin-top 0.8s ease, margin-bottom 1s ease;
         }
         .skibidi-pill::after {
         }
