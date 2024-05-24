@@ -376,7 +376,7 @@
                             timeouts.set(activeElement, setTimeout(() => {
                                 deactivateElement(activeElement);
                                 timeouts.delete(activeElement);
-                            }, 500));
+                            }, 200));
                         }
                     } else {
                         if (timeouts.has(activeElement)) {
@@ -405,7 +405,7 @@
                         timeouts.set(activeElement, setTimeout(() => {
                             deactivateElement(activeElement);
                             timeouts.delete(activeElement);
-                        }, 300));
+                        }, 0));
                     }
                 });
             });
