@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <style>
         :root {
-      		--hover-bg-transparency: 0.7;
-      	}
+            --hover-bg-transparency: 0.7;
+        }
 
         body {
             margin: 0;
@@ -21,7 +21,6 @@
             align-items: center;
             min-height: 100vh;
             -ms-overflow-style: none;
-            
         }
 
         body::-webkit-scrollbar {
@@ -66,6 +65,11 @@
             margin-bottom: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .welcome-pill.active {
+            background-color: black;
         }
 
         .welcome-pill h1 {
@@ -90,7 +94,7 @@
             margin-bottom: 9px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             background-size: 100% 100%;
-            transition: border-color 1s ease, height 2.5s ease;
+            transition: border-color 1s ease, height 1.2s ease;
             overflow: hidden;
             height: 20px;
         }
@@ -107,19 +111,19 @@
             z-index: 1;
         }
 
-        .social-pill:hover::after, .social-pill:active::after {
+        .social-pill.active::after {
             opacity: 1;
-	        transition: opacity 0s ease;
+            transition: opacity 0s ease;
         }
 
-        .social-pill:hover {
+        .social-pill.active {
             height: 40px;
             transition: height 0.5s ease-out;
         }
 
         .social-pill .social-icon, .social-pill .social-link {
-    	    z-index: 2;
-	    }
+            z-index: 2;
+        }
 
         .fade-in-text {
             opacity: 0;
@@ -135,7 +139,7 @@
             z-index: 3;
         }
 
-        .social-pill:hover .fade-in-text {
+        .social-pill.active .fade-in-text {
             opacity: 1;
             transition: opacity 0.1s ease;
         }
@@ -161,7 +165,7 @@
             margin-left: -50%;
             margin-top: -2%;
             margin-bottom: 8px;
-            transition: height 0.5s ease, width 0.8s ease, margin-left 0.8s ease, margin-top 0.8s ease, margin-bottom 1s ease;
+            transition: height 1.5s ease, width 1.8s ease, margin-left 1.8s ease, margin-top 1.8s ease, margin-bottom 2s ease;
         }
         .skibidi-pill::after {
         }
@@ -169,13 +173,13 @@
             width: 100%;
             height: 100%;
             border-radius: 24px;
-            transition: border-radius 1s ease
+            transition: border-radius 1s ease;
         }
         .skibidi-icon::after {
         }
         .skibidi-icon:hover {
             border-radius: 240px;
-            transition: border-radius 1s ease
+            transition: border-radius 1s ease;
         }
 
         .social-link {
@@ -255,7 +259,7 @@
 
         .steam {
             background: linear-gradient(to left, #2A475E, #25252B 80%);
-	}
+        }
 
         .steam::after {
             background: linear-gradient(to right, rgba(42, 71, 94, var(--hover-bg-transparency)), #2A475E);
@@ -274,7 +278,7 @@
     <div class="container">
         <div class="main-box">
             <div class="name">JulianGaming007</div>
-            <div class="welcome-pill">
+            <div class="welcome-pill" id="welcome-pill">
                 <h1>Welcome to my page!</h1>
                 <p>Here you can find all my socials :)</p>
             </div>
@@ -333,5 +337,99 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const socialPills = document.querySelectorAll('.social-pill');
+            let activeElements = new Set();
+            let timeouts = new Map();
+
+            const activateElement = (element) => {
+                element.classList.add('active');
+                activeElements.add(element);
+                if (timeouts.has(element)) {
+                    clearTimeout(timeouts.get(element));
+                    timeouts.delete(element);
+                }
+            };
+
+            const deactivateElement = (element) => {
+                element.classList.remove('active');
+                activeElements.delete(element);
+            };
+
+            document.addEventListener('touchstart', function (event) {
+                const touchedElement = event.target.closest('.social-pill');
+                if (touchedElement) {
+                    activateElement(touchedElement);
+                }
+            });
+
+            document.addEventListener('touchmove', function (event) {
+                const touchedElement = document.elementFromPoint(
+                    event.touches[0].clientX,
+                    event.touches[0].clientY
+                );
+                activeElements.forEach((activeElement) => {
+                    if (!touchedElement || !activeElement.contains(touchedElement)) {
+                        if (!timeouts.has(activeElement)) {
+                            timeouts.set(activeElement, setTimeout(() => {
+                                deactivateElement(activeElement);
+                                timeouts.delete(activeElement);
+                            }, 500));
+                        }
+                    } else {
+                        if (timeouts.has(activeElement)) {
+                            clearTimeout(timeouts.get(activeElement));
+                            timeouts.delete(activeElement);
+                        }
+                    }
+                });
+
+                if (touchedElement) {
+                    const newActiveElement = touchedElement.closest('.social-pill');
+                    if (newActiveElement) {
+                        activateElement(newActiveElement);
+                    }
+                }
+
+                // Disable pull-to-refresh
+                if (event.touches[0].clientY < 0) {
+                    event.preventDefault();
+                }
+            });
+
+            document.addEventListener('touchend', function () {
+                activeElements.forEach((activeElement) => {
+                    if (!timeouts.has(activeElement)) {
+                        timeouts.set(activeElement, setTimeout(() => {
+                            deactivateElement(activeElement);
+                            timeouts.delete(activeElement);
+                        }, 300));
+                    }
+                });
+            });
+
+            socialPills.forEach(pill => {
+                pill.addEventListener('mouseover', function () {
+                    activateElement(pill);
+                });
+                pill.addEventListener('mouseout', function () {
+                    timeouts.set(pill, setTimeout(() => {
+                        deactivateElement(pill);
+                        timeouts.delete(pill);
+                    }, 150));
+                });
+            });
+
+            // Disable pull-to-refresh on the entire document
+            document.addEventListener('touchmove', function (event) {
+                if (event.touches[0].clientY > 0 && window.scrollY === 0) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+        });
+
+    </script>
 </body>
 </html>
