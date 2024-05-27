@@ -58,31 +58,61 @@
         }
 
         .welcome-pill {
-            background-color: #7F27FF;
+            background-color: black;
             color: white;
             border-radius: 24px;
             padding: 16px;
+            max-height: 70px;
             margin-bottom: 16px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
-            transition: background-color 0.3s ease;
+            overflow: hidden;
+            transition: background-color 0.8s ease, max-height 2.5s ease;
         }
 
         .welcome-pill.active {
-            background-color: black;
+            max-height: 180px;
+            background-color: #7F27FF;
         }
-
+        
         .welcome-pill h1 {
-            margin: 0 0 10px;
+            margin-top: 0;
             font-size: 24px;
             font-weight: 700;
             font-family: 'Poetsen One', sans-serif;
         }
 
-        .welcome-pill p {
-            margin: 0;
+        .welcome-pill .p1 {
+            margin: -5px 0 0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .welcome-pill .p2 {
+            margin: 5px 0 0px;
+            font-size: 10px;
+            font-weight: 800;
+            transition: opacity 1.5s ease
+        }
+
+        .welcome-pill.active .p2 {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .welcome-pill .p3 {
+            margin-top: 10px;
+            margin-bottom: 0;
+            opacity: 0;
             font-size: 16px;
             font-weight: 400;
+            transition: opacity 2.5s ease, margin-top 1s ease-out;
+        }
+
+        .welcome-pill.active .p3 {
+            margin-top: 0px;
+            opacity: 1;
+            transition: opacity 0.5s ease, margin-top 1.5s ease;
         }
 
         .social-pill {
@@ -97,6 +127,7 @@
             transition: border-color 1s ease, height 1.2s ease;
             overflow: hidden;
             height: 20px;
+            z-index: 1;
         }
 
         .social-pill::after {
@@ -108,7 +139,6 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.9s ease;
-            z-index: 1;
         }
 
         .social-pill.active::after {
@@ -121,6 +151,7 @@
             transition: height 0.5s ease-out;
         }
 
+        /* set social icon and link within social pill z-index*/
         .social-pill .social-icon, .social-pill .social-link {
             z-index: 2;
         }
@@ -139,6 +170,7 @@
             z-index: 3;
         }
 
+        /* Change opacity of .fade-in-text and applies transition when .social-pill is active */
         .social-pill.active .fade-in-text {
             opacity: 1;
             transition: opacity 0.1s ease;
@@ -150,38 +182,6 @@
             margin-right: 10px;
         }
 
-        .skibidi-pill {
-            color: white;
-            border-radius: 240px;
-            height: 34px;
-            width: 100%;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: height 0.7s ease, width 0.5s ease, margin-left 0.5s ease, margin-top 0.5s ease, margin-bottom 0.5s ease;
-        }
-        .skibidi-pill:hover {
-            height: 400px;
-            width: 200%;
-            margin-left: -50%;
-            margin-top: -2%;
-            margin-bottom: 8px;
-            transition: height 1.5s ease, width 1.8s ease, margin-left 1.8s ease, margin-top 1.8s ease, margin-bottom 2s ease;
-        }
-        .skibidi-pill::after {
-        }
-        .skibidi-icon {
-            width: 100%;
-            height: 100%;
-            border-radius: 24px;
-            transition: border-radius 1s ease;
-        }
-        .skibidi-icon::after {
-        }
-        .skibidi-icon:hover {
-            border-radius: 240px;
-            transition: border-radius 1s ease;
-        }
-
         .social-link {
             color: white;
             text-decoration: none;
@@ -191,6 +191,7 @@
 
         .social-link:hover {
             text-decoration: underline;
+            text-decoration-thickness: 1px;
         }
 
         .discord {
@@ -280,10 +281,9 @@
             <div class="name">JulianGaming007</div>
             <div class="welcome-pill" id="welcome-pill">
                 <h1>Welcome to my page!</h1>
-                <p>Here you can find all my socials :)</p>
-            </div>
-            <div class="skibidi-pill">
-                <img src="images/download.jfif" class="skibidi-icon">
+                <p class="p1">Here you can find all my socials :)</p>
+                <p class="p2">...more</p>
+                <p class="p3">Hi fren! So hapy you here. Dis my lil place on internetz where I put stuff bout me, wat I like, and thots in my hed. If you wanna see wat I doin, chek links to my socals down ther. I post pic, random stufs, and talk bout meny thing. Lets be frens and conect mor!</p>
             </div>
             <div class="social-pill discord">
                 <img src="images/discord_icon.svg" alt="Discord Icon" class="social-icon">
@@ -341,6 +341,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const socialPills = document.querySelectorAll('.social-pill');
+            const welcomePill = document.querySelectorAll('.welcome-pill');
             let activeElements = new Set();
             let timeouts = new Map();
 
@@ -419,6 +420,18 @@
                         deactivateElement(pill);
                         timeouts.delete(pill);
                     }, 150));
+                });
+            });
+
+            welcomePill.forEach(pill => {
+                pill.addEventListener('mouseover', function () {
+                    activateElement(pill);
+                });
+                pill.addEventListener('mouseout', function () {
+                    timeouts.set(pill, setTimeout(() => {
+                        deactivateElement(pill);
+                        timeouts.delete(pill);
+                    }, 100));
                 });
             });
 
