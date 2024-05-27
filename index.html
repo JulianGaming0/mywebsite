@@ -337,7 +337,6 @@
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const socialPills = document.querySelectorAll('.social-pill');
@@ -441,6 +440,25 @@
                     event.preventDefault();
                 }
             }, { passive: false });
+
+
+            // Wave effect function
+            const createWaveEffect = () => {
+
+                const pills = [...socialPills];
+                pills.forEach((pill, index) => {
+                    setTimeout(() => {
+                        activateElement(pill);
+                        setTimeout(() => {
+                            deactivateElement(pill);
+                        }, 350);
+                    }, index * 70);
+                });
+
+            };
+
+            // Trigger wave effect on load
+            createWaveEffect();
         });
 
     </script>
