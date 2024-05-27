@@ -71,7 +71,7 @@
         }
 
         .welcome-pill.active {
-            max-height: 180px;
+            max-height: 160px;
             background-color: #7F27FF;
         }
         
@@ -283,7 +283,7 @@
                 <h1>Welcome to my page!</h1>
                 <p class="p1">Here you can find all my socials :)</p>
                 <p class="p2">...more</p>
-                <p class="p3">Hi fren! So hapy you here. Dis my lil place on internetz where I put stuff bout me, wat I like, and thots in my hed. If you wanna see wat I doin, chek links to my socals down ther. I post pic, random stufs, and talk bout meny thing. Lets be frens and conect mor!</p>
+                <p class="p3">Hi fren! So hapy you here. Dis my lil place on internetz where I put stuff bout me. If you wanna see wat I doin, chek links to my socals down ther. I post pic, random stufs, and talk bout meny thing. Lets be frens and conect mor!</p>
             </div>
             <div class="social-pill discord">
                 <img src="images/discord_icon.svg" alt="Discord Icon" class="social-icon">
@@ -431,7 +431,7 @@
                     timeouts.set(pill, setTimeout(() => {
                         deactivateElement(pill);
                         timeouts.delete(pill);
-                    }, 100));
+                    }, 0));
                 });
             });
 
