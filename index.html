@@ -187,11 +187,13 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 18px;
+            transition: font-size 0.4s ease;
         }
 
         .social-link:hover {
             text-decoration: underline;
             text-decoration-thickness: 1px;
+            font-size: 19px;
         }
 
         .discord {
@@ -318,7 +320,7 @@
             <div class="social-pill x">
                 <img src="images/x_icon.svg" alt="X Icon" class="social-icon">
                 <a href="https://x.com/Julian47737754" class="social-link">X</a>
-                <div class="fade-in-text">@Julian47737754</div>
+                <div class="fade-in-text">@JulianGaming007</div>
             </div>
             <div class="social-pill steam">
                 <img src="images/steam_icon.svg" alt="Steam Icon" class="social-icon">
@@ -340,6 +342,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const socialPills = document.querySelectorAll('.social-pill');
+            const socialLinks = document.querySelectorAll('.social-link');
             const welcomePill = document.querySelectorAll('.welcome-pill');
             let activeElements = new Set();
             let timeouts = new Map();
@@ -451,8 +454,8 @@
                         activateElement(pill);
                         setTimeout(() => {
                             deactivateElement(pill);
-                        }, 350);
-                    }, index * 70);
+                        }, 320);
+                    }, index * 50);
                 });
 
             };
