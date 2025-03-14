@@ -230,11 +230,17 @@
             document.addEventListener("touchstart", function (e) {
                 if (!welcomePill.contains(e.target)) {
                     collapsePill(); // Collapse pill if touched outside
+                } else {
+                    expandPillOnHover();
                 }
             });
         });
 
 
+
+
+
     </script>
+    
 </body>
 </html>
