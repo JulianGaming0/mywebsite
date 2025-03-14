@@ -204,11 +204,27 @@
                 // Measure content height on hover
                 let fullHeight = welcomePill.scrollHeight * 0.92 - 14 + "px";
                 welcomePill.style.maxHeight = fullHeight; // Dynamically set max height
+                welcomePill.classList.add("active"); // Trigger active class for background color change
             }
 
             function collapsePill() {
                 welcomePill.style.maxHeight = "70px";
+                welcomePill.classList.remove("active"); // Remove active class to reset background
             }
+
+            welcomePill.addEventListener("touchstart", function (e) {
+                let startTouch = e.changedTouches[0]; // Get initial touch position
+
+                // On touchstart, we'll prevent any undesired swipe behavior
+                welcomePill.addEventListener("touchend", function (e) {
+                    let endTouch = e.changedTouches[0]; // Get end position
+
+                    // Check if the touch moved too far; only expand if it's a short tap
+                    if (Math.abs(startTouch.pageX - endTouch.pageX) < 50 && Math.abs(startTouch.pageY - endTouch.pageY) < 50) {
+                        expandPillOnHover(); // Expand pill on short tap
+                    }
+                });
+            });
 
             // mouse
             welcomePill.addEventListener("mouseenter", expandPillOnHover);

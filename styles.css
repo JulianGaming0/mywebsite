@@ -48,37 +48,6 @@ body::-webkit-scrollbar {
     margin-top: -4px;
 }
 
-/* .welcome-pill {
-    background-color: black;
-    color: white;
-    border-radius: 24px;
-    padding: 16px;
-    max-height: 70px;
-    margin-bottom: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    overflow: hidden;
-    transition: background-color 0.8s ease, max-height 2.5s ease;
-}
-
-.welcome-pill.active {
-    max-height: 160px;
-    background-color: #7F27FF;
-} */
-
-/* .welcome-pill {
-    background-color: black;
-    color: white;
-    border-radius: 24px;
-    padding: 16px;
-    max-height: 70px;
-    margin-bottom: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    overflow: hidden;
-    transition: background-color 0.8s ease, max-height 1s ease;
-} */
-
 .welcome-pill {
     background-color: black;
     color: white;
@@ -120,21 +89,6 @@ body::-webkit-scrollbar {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
-
-/* .welcome-pill .p3 {
-    margin-top: 10px;
-    margin-bottom: 0;
-    opacity: 0;
-    font-size: 16px;
-    font-weight: 400;
-    transition: opacity 2.5s ease, margin-top 1s ease-out;
-}
-
-.welcome-pill.active .p3 {
-    margin-top: 0px;
-    opacity: 1;
-    transition: opacity 0.5s ease, margin-top 1.5s ease;
-} */
 
 .welcome-pill .p3 {
     opacity: 0;
