@@ -156,18 +156,6 @@
                 });
             });
 
-            welcomePill.forEach(pill => {
-                pill.addEventListener('mouseover', function () {
-                    activateElement(pill);
-                });
-                pill.addEventListener('mouseout', function () {
-                    timeouts.set(pill, setTimeout(() => {
-                        deactivateElement(pill);
-                        timeouts.delete(pill);
-                    }, 100));
-                });
-            });
-
             // Disable pull-to-refresh on the entire document
             document.addEventListener('touchmove', function (event) {
                 if (event.touches[0].clientY > 0 && window.scrollY === 0) {
@@ -211,11 +199,6 @@
                 welcomePill.style.transition = "background-color 2s ease, max-height 1.3s ease-in-out"; // Ensure smooth collapse transition
                 welcomePill.style.maxHeight = "70px"; // Collapse back to initial height
                 welcomePill.classList.remove("active"); // Remove active class to reset background
-
-                // After the transition ends, reset the transition property so it can be applied again
-                setTimeout(() => {
-                    welcomePill.style.transition = ""; // Reset transition for next expansion
-                }, 1300); // Match the duration of the collapse transition
             }
 
             welcomePill.addEventListener("touchstart", function (e) {
@@ -235,7 +218,7 @@
                         }
                     }
                 });
-    });
+            });
 
             // mouse
             welcomePill.addEventListener("mouseenter", expandPillOnHover);
@@ -243,6 +226,12 @@
             // touch
             welcomePill.addEventListener("touchstart", expandPillOnHover);
             welcomePill.addEventListener("touchend", collapsePill);
+
+            document.addEventListener("touchstart", function (e) {
+                if (!welcomePill.contains(e.target)) {
+                    collapsePill(); // Collapse pill if touched outside
+                }
+            });
         });
 
 
