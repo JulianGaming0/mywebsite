@@ -204,12 +204,10 @@
                 // Measure content height on hover
                 let fullHeight = welcomePill.scrollHeight * 0.92 - 14 + "px";
                 welcomePill.style.maxHeight = fullHeight; // Dynamically set max height
-                welcomePill.classList.add("active"); // Trigger active class for background color change
             }
 
             function collapsePill() {
                 welcomePill.style.maxHeight = "70px";
-                welcomePill.classList.remove("active"); // Remove active class to reset background
             }
 
             welcomePill.addEventListener("touchstart", function (e) {
